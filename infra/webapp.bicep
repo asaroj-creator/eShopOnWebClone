@@ -12,11 +12,12 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-09-01' = {
   }
   sku: {
     name: sku
+    capacity: 1 // Add capacity if needed
   }
 }
 resource appService 'Microsoft.Web/sites@2022-09-01' = {
   name: webAppName
-  kind: 'app'
+  kind: 'app,linux'
   location: location
   properties: {
     serverFarmId: appServicePlan.id
